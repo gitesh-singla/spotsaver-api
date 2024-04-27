@@ -7,6 +7,7 @@ const router = require("./routes/routes");
 const reservationStatusScheduler = require('./utils/reservationStatusScheduler')
 const requestLogger = require('./middleware/requestLogger')
 const errorLogger = require('./utils/errorLogger')
+const pingKeepAlive = require('./utils/pingKeepAlive')
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use(express.json())
 app.use(express.static('uploads'))
 app.use(requestLogger);
 reservationStatusScheduler.start();
+pingKeepAlive.start();
 
 async function runMongo() {
     try {
