@@ -11,6 +11,7 @@ const addListing = async (req, res) => {
   const { jwtResponse } = req;
   try {
     const { _id, phone } = await Users.findById(jwtResponse._id)
+    console.log(data);
     data.location = JSON.parse(data.location);
     if (data.startTiming >= data.endTiming) throw ("Invaild Active Times");
     // const images = req.files.map((file) => file.filename);
