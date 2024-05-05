@@ -1,9 +1,14 @@
 const axios = require('axios')
 
+const axiosConfig = {
+    timeout: 5000,
+}
+
 async function coordinatesToCity(lat, lon) {
     console.log({lat, lon});
     const response = await axios.get(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
+        axiosConfig
     )
     if (response.status == 200) {
         if (response.data.address) {
