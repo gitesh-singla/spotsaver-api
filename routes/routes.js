@@ -20,7 +20,9 @@ const cancelReservation = require("../controllers/cancelReservation");
 const editSpot = require("../controllers/editSpot");
 const deleteSpot = require("../controllers/deleteSpot");
 const getAmenities = require("../controllers/getAmenities");
+const pingHome = require("../controllers/pingHome");
 
+router.get("/", pingHome);
 router.post("/login", login);
 router.post("/register", register);
 router.get("/auth", useAuth, auth);
