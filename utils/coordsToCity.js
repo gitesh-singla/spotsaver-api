@@ -11,6 +11,7 @@ const axiosConfig = {
         keepAlive: true,
         keepAliveMsecs: 5000
     }),
+    timeout: 5000,
 }
 
 async function coordinatesToCity(lat, lon) {
