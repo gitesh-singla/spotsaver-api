@@ -5,11 +5,11 @@ const https = require('https')
 const axiosConfig = {
     httpAgent: new http.Agent({
         keepAlive: true,
-        keepAliveMsecs: 5000
+        timeout: 5000,
     }),
     httpsAgent: new https.Agent({
         keepAlive: true,
-        keepAliveMsecs: 5000
+        timeout: 5000,
     }),
     timeout: 5000,
 }
