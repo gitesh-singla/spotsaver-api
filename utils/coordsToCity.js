@@ -1,7 +1,16 @@
 const axios = require('axios')
+const http = require('http')
+const https = require('https')
 
 const axiosConfig = {
-    timeout: 5000,
+    httpAgent: new http.Agent({
+        keepAlive: true,
+        keepAliveMsecs: 5000
+    }),
+    httpsAgent: new https.Agent({
+        keepAlive: true,
+        keepAliveMsecs: 5000
+    }),
 }
 
 async function coordinatesToCity(lat, lon) {
