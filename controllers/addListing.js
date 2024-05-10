@@ -13,8 +13,8 @@ const addListing = async (req, res) => {
     const { _id, phone } = await Users.findById(jwtResponse._id)
     if (data.startTiming >= data.endTiming) throw ("Invaild Active Times");
     // const images = req.files.map((file) => file.filename);
-    const city = await coordinatesToCity(data.location.lat, data.location.lon)
-    if (!city) throw ('city not determined')
+    // const city = await coordinatesToCity(data.location.lat, data.location.lon)
+    // if (!city) throw ('city not determined')
     await Spots.create({
       ...data,
       city,
