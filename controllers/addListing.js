@@ -17,7 +17,6 @@ const addListing = async (req, res) => {
     // if (!city) throw ('city not determined')
     await Spots.create({
       ...data,
-      city,
       owner: _id,
       createdAt: new Date(),
       phone,
