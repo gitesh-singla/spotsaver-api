@@ -7,7 +7,7 @@ const jwtKey = process.env.JWT_KEY;
 const oneMonthFromNow = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
 const cookieSettings = {
-  sameSite: 'Lax',
+  sameSite: 'None',
   expires: oneMonthFromNow,
   secure: true,
   httpOnly: true
