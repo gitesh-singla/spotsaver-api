@@ -2,7 +2,16 @@ const Users = require("../models/Users");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const errorLogger = require("../utils/errorLogger");
-const jwtKey = process.env.JWT_KEY
+const jwtKey = process.env.JWT_KEY;
+
+const oneMonthFromNow = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
+
+const cookieSettings = {
+  sameSite: 'Lax',
+  expires: oneMonthFromNow,
+  secure: true,
+  httpOnly: true
+}
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -20,7 +29,7 @@ const login = async (req, res) => {
             try {
               if (error) throw error;
               const { name, email, _id, phone } = userExists;
-              res.cookie("authToken", token).json({ name, email, _id, phone });
+              res.cookie("authToken", token, cookieSettings).json({ name, email, _id, phone });
             } catch (error) {
               console.log(error);
               res.status(422).json(error.message);
