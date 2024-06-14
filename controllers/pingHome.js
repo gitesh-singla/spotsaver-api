@@ -8,6 +8,8 @@ async function pingHome(req, res) {
         const errorLog = `At route ${req.url} ${error}`;
         errorLogger(errorLog);
         res.status(402).json(error);
+    } finally {
+        console.log("Request receieved!");
     }
 }
 
